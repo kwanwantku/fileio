@@ -83,9 +83,9 @@ public class FileCopyTask implements Runnable {
 		// so the caller will know that filename could not be opened.
 		
 		
-//		if(in.equals(null)) {
-//			throw new RuntimeException("Runtime Exception");
-//		}
+		if(in.equals(null)) {
+			throw new RuntimeException("Runtime Exception");
+		}
 	}
 	
 	/**
@@ -134,84 +134,11 @@ public class FileCopyTask implements Runnable {
 		// Define a FileUtil task to copy a file byte by byte.
 		// This is an anonymous class that extends FileUtilTimer.
 		// as parameters to the superclass constructor?
-		FileCopyTask task1 = new FileCopyTask() {
-			public void run() {
-				try {
-					FileUtil.copy(in, out);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-			public String toString() {
-				return "Copy a file byte-by-byte";
-			}
-		};
-		
-		FileCopyTask task2 = new FileCopyTask() {
-			public void run() {
-				try {
-					FileUtil.copy(in, out,1024);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-			public String toString() {
-				return "Copy a file array of byte";
-			}
-		};
-		
-		FileCopyTask task3 = new FileCopyTask() {
-			public void run() {
-				try {
-					FileUtil.copy(in, out,1024*4);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-			public String toString() {
-				return "Copy a file array of 4 bytes";
-			}
-		};
-		
-		FileCopyTask task4 = new FileCopyTask() {
-			public void run() {
-				try {
-					FileUtil.copy(in, out,1024*64);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-			public String toString() {
-				return "Copy a file array of 64 bytes";
-			}
-		};
-		
-		FileCopyTask task5 = new FileCopyTask() {
-			public void run() {
-				try {
-					FileUtil.copy(in, out,1024*64);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-			public String toString() {
-				return "Copy a file Using BufferedReader and PrintWriter";
-			}
-		};
-		
-		
-		
-		task1.setInput(inputFilename);
-		task1.setOutput("filecopy1.txt");
-		task2.setInput(inputFilename);
-		task2.setOutput("filecopy2.txt");
-		task3.setInput(inputFilename);
-		task3.setOutput("filecopy3.txt");
-		task4.setInput(inputFilename);
-		task4.setOutput("filecopy4.txt");
-		task5.setInput(inputFilename);
-		task5.setOutput("filecopy5.txt");
-		
+		ByteCopyTask task1 = new ByteCopyTask(inputFilename, "src/file-copy1.txt");
+		ArrayCopyTask task2 = new ArrayCopyTask(inputFilename, "src/file-copy2.txt",1);
+		ArrayCopyTask task3 = new ArrayCopyTask(inputFilename, "src/file-copy3.txt",4);
+		ArrayCopyTask task4 = new ArrayCopyTask(inputFilename, "src/file-copy4.txt", 64);
+		LineCopyTask task5 = new LineCopyTask(inputFilename, "src/file-copy5.txt");
 		//TaskTimer timer = new TaskTimer();
 		TaskTimer.measureAndPrint(task1);
 		TaskTimer.measureAndPrint(task2);
