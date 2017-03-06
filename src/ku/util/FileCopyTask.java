@@ -28,7 +28,7 @@ import stopwatch.TaskTimer;
  * includes files in your project's src/ directory.  
  * It is a standard technique for opening resources.
  * 
- * @author 
+ * @author Kwanwan Tantichartkul
  *
  */
 public class FileCopyTask implements Runnable {
@@ -135,21 +135,17 @@ public class FileCopyTask implements Runnable {
 		// This is an anonymous class that extends FileUtilTimer.
 		// as parameters to the superclass constructor?
 		ByteCopyTask task1 = new ByteCopyTask(inputFilename, "src/file-copy1.txt");
-		ArrayCopyTask task2 = new ArrayCopyTask(inputFilename, "src/file-copy2.txt",1);
-		ArrayCopyTask task3 = new ArrayCopyTask(inputFilename, "src/file-copy3.txt",4);
-		ArrayCopyTask task4 = new ArrayCopyTask(inputFilename, "src/file-copy4.txt", 64);
+		BlocksizeCopyTask task2 = new BlocksizeCopyTask(inputFilename, "src/file-copy2.txt",1);
+		BlocksizeCopyTask task3 = new BlocksizeCopyTask(inputFilename, "src/file-copy3.txt",4);
+		BlocksizeCopyTask task4 = new BlocksizeCopyTask(inputFilename, "src/file-copy4.txt", 64);
 		LineCopyTask task5 = new LineCopyTask(inputFilename, "src/file-copy5.txt");
+		
 		//TaskTimer timer = new TaskTimer();
 		TaskTimer.measureAndPrint(task1);
 		TaskTimer.measureAndPrint(task2);
 		TaskTimer.measureAndPrint(task3);
 		TaskTimer.measureAndPrint(task4);
 		TaskTimer.measureAndPrint(task5);
-		
-		//TODO Define tasks for the other copy tests you need.
-		
-		//TODO 'Avoid Magic Numbers' - some tasks require a blocksize
-		// for the copy method.  Don't write this as a number in the
-		// anonymous class!  Use a variable from the outer scope (here).  
+
 	}
 }
