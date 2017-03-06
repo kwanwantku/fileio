@@ -24,7 +24,7 @@ public class BlocksizeCopyTask extends FileCopyTask {
 		
 	/**
 	  * The run methods that make the task copy and convert block size to byte by multiply 1024.
-	  * One block size is equal to 1024 bytes.
+	  * One block size is equal to 1024 bytes and also equal to 1 kilobyte.
 	  * @throws IOException is throws the problem of the input and output files.
 	  */
 	public void run() {

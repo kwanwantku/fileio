@@ -39,7 +39,7 @@ public class FileUtil {
 	
 	/**
 	 * The copy of the the text that input and convert the text to output for each block size.
-	 * One block size is equal to 1024 bytes.
+	 * One block size is equal to 1024 bytes and also equal to one kilobyte.
 	 * @param in is a input text that want to convert for copy to new files.
 	 * @param out is a output text that show the text that copy from input in new files.
 	 * @throws IOException is throws the problem of the input and output files.
@@ -67,9 +67,9 @@ public class FileUtil {
 		BufferedReader bufferreader = new BufferedReader(inputstreamreader);
 		PrintWriter print = new PrintWriter(out);
 		String readline = bufferreader.readLine();
-			while(!readline.equals(null)) {
-				readline = bufferreader.readLine()+"\n";
+			while(readline!=null) {
 				print.write(readline);
+				readline = bufferreader.readLine();
 			}
 			bufferreader.close();
 			print.close();
